@@ -1,0 +1,112 @@
+{
+  "entries": [
+    {
+      "id": 10,
+      "title": "KLINIU - Principal",
+      "username": "kliniucolombia@gmail.com",
+      "password": "Kliniu4312*",
+      "url": "",
+      "notes": "Cuenta principal KLINIU",
+      "color": "",
+      "createdAt": "2026-05-25 13:52:49",
+      "updatedAt": "2026-05-25 13:52:49"
+    },
+    {
+      "id": 11,
+      "title": "KLINIU - Vendedor Uno",
+      "username": "vendedor1@kliniu.com",
+      "password": "Kliniu2025",
+      "url": "",
+      "notes": "Vendedor Uno",
+      "color": "",
+      "createdAt": "2026-05-25 13:52:49",
+      "updatedAt": "2026-05-25 13:52:49"
+    },
+    {
+      "id": 12,
+      "title": "KLINIU - Vendedor Dos",
+      "username": "vendedor2@kliniu.com",
+      "password": "Kliniu2025",
+      "url": "",
+      "notes": "Vendedor Dos",
+      "color": "",
+      "createdAt": "2026-05-25 13:52:49",
+      "updatedAt": "2026-05-25 13:52:49"
+    },
+    {
+      "id": 13,
+      "title": "KLINIU - Empaque",
+      "username": "empaque@kliniu.co",
+      "password": "empaque2024",
+      "url": "",
+      "notes": "creado",
+      "color": "",
+      "createdAt": "2026-05-25 13:52:49",
+      "updatedAt": "2026-05-25 13:52:49"
+    },
+    {
+      "id": 14,
+      "title": "UNIPARS - Cuenta principal",
+      "username": "uniparscolombia@gmail.com",
+      "password": "15472007Unipars%",
+      "url": "",
+      "notes": "Cuenta de unipars y supabase",
+      "color": "",
+      "createdAt": "2026-05-25 13:52:49",
+      "updatedAt": "2026-05-25 13:52:49"
+    },
+    {
+      "id": 15,
+      "title": "UNIPARS - Base datos Supabase",
+      "username": "uniparscolombia@gmail.com",
+      "password": "kikto7-Jozrip-donqin",
+      "url": "",
+      "notes": "Clave de base de datos - Uniaprs",
+      "color": "",
+      "createdAt": "2026-05-25 13:52:49",
+      "updatedAt": "2026-05-25 13:52:49"
+    },
+    {
+      "id": 16,
+      "title": "UNIPARS - Admin web",
+      "username": "uniparscolombia@gmail.com",
+      "password": "123456789",
+      "url": "",
+      "notes": "Admin web - código extra: 1234",
+      "color": "",
+      "createdAt": "2026-05-25 13:52:49",
+      "updatedAt": "2026-05-25 13:52:49"
+    },
+    {
+      "id": 17,
+      "title": "DROKEX - Correo y GitHub",
+      "username": "drokexlatam@gmail.com",
+      "password": "Drokex1234%",
+      "url": "",
+      "notes": "Cuenta de correo y GitHub",
+      "color": "",
+      "createdAt": "2026-05-25 13:52:49",
+      "updatedAt": "2026-05-25 13:52:49"
+    },
+    {
+      "id": 18,
+      "title": "DROKEX - Supabase",
+      "username": "",
+      "password": "qogcaz-1runbi-Nyjqar",
+      "url": "",
+      "notes": "Contraseña de Supabase",
+      "color": "",
+      "createdAt": "2026-05-25 13:52:49",
+      "updatedAt": "2026-05-25 13:52:49"
+    }
+  ],
+  "users": [
+    {
+      "id": "local-user",
+      "username": "brandon",
+      "email": "",
+      "password": "brandon123"
+    }
+  ],
+  "nextId": 19
+}

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-new/
+dist-old/
+*.dmg
+.DS_Store
+*.log
+.env
+.env.local
+npm-debug.log*
+out/
+*.local.json

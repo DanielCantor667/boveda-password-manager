@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>Bóveda</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="loginScreen" class="screen">
+    <div class="login-box">
+      <div class="logo">🔐</div>
+      <h1 id="loginTitle">Bóveda</h1>
+      <p id="loginSubtitle" class="subtitle">Ingresa tu correo y contraseña</p>
+      <div id="loginForm" class="form-group">
+        <input type="text" id="loginUsername" placeholder="Usuario o correo" autofocus>
+        <div id="loginEmailField" class="hidden">
+          <input type="email" id="loginEmail" placeholder="Correo electrónico">
+        </div>
+        <div class="password-row">
+          <input type="password" id="loginPassword" placeholder="Contraseña">
+          <button id="toggleLoginPasswordBtn" class="btn btn-secondary" title="Mostrar contraseña">👁️</button>
+        </div>
+        <button id="loginButton" class="btn btn-primary">Iniciar sesión</button>
+        <p id="authModeText" class="auth-switch-text">¿No tienes cuenta?</p>
+        <button id="switchAuthBtn" class="link-btn">Crear cuenta</button>
+        <button id="forgotPasswordBtn" class="link-btn">¿Olvidaste tu contraseña?</button>
+      </div>
+      <p id="loginError" class="error hidden">Correo o contraseña incorrectos</p>
+    </div>
+  </div>
+
+  <!-- Main Screen -->
+  <div id="mainScreen" class="screen hidden">
+    <header>
+      <h1>🔐 Bóveda</h1>
+      <div class="header-actions">
+        <input type="text" id="searchInput" placeholder="Buscar...">
+        <button id="addButton" class="btn btn-primary">+ Nueva</button>
+        <button id="logoutButton" class="btn btn-secondary">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="emptyState" class="empty-state">
+        <p>No hay contraseñas guardadas</p>
+        <p class="subtitle">Haz clic en "+ Nueva" para agregar tu primera entrada</p>
+      </div>
+      <div id="entriesList" class="entries-list hidden"></div>
+    </main>
+  </div>
+
+  <!-- Entry Modal -->
+  <div id="entryModal" class="modal-overlay hidden">
+    <div class="modal modal-wide">
+      <h2 id="modalTitle">Nueva entrada</h2>
+      <div class="form-group">
+        <label for="entryTitle">Título</label>
+        <input type="text" id="entryTitle" placeholder="Ej: Gmail, Netflix, GitHub...">
+      </div>
+
+      <!-- Credentials Container -->
+      <div id="credentialsContainer">
+        <label>Credenciales</label>
+        <div id="credentialsList"></div>
+        <button id="addCredentialBtn" class="btn btn-secondary btn-sm">+ Agregar credencial</button>
+      </div>
+
+      <div class="form-group">
+        <label for="entryUrl">URL</label>
+        <input type="text" id="entryUrl" placeholder="https://...">
+      </div>
+      <div class="form-group">
+        <label for="entryNotes">Notas</label>
+        <textarea id="entryNotes" placeholder="Notas adicionales..." rows="3"></textarea>
+      </div>
+
+      <!-- Theme Picker -->
+      <div class="form-group">
+        <label>Tema</label>
+        <div class="theme-grid">
+          <div class="theme-field">
+            <label>Fondo</label>
+            <input type="color" id="themeBg" value="#0d1117">
+          </div>
+          <div class="theme-field">
+            <label>Borde</label>
+            <input type="color" id="themeBorder" value="#30363d">
+          </div>
+          <div class="theme-field">
+            <label>Título</label>
+            <input type="color" id="themeTitle" value="#f0f6fc">
+          </div>
+          <div class="theme-field">
+            <label>Botón</label>
+            <input type="color" id="themeButton" value="#238636">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="cancelModalBtn" class="btn">Cancelar</button>
+        <button id="saveEntryBtn" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Generate Password Modal -->
+  <div id="generatorModal" class="modal-overlay hidden">
+    <div class="modal modal-sm">
+      <h2>Generar contraseña</h2>
+      <div class="form-group">
+        <label for="genLength">Longitud</label>
+        <input type="number" id="genLength" value="20" min="4" max="128">
+      </div>
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="genUppercase" checked> Mayúsculas
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="genLowercase" checked> Minúsculas
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="genDigits" checked> Dígitos
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="genSymbols" checked> Símbolos
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Contraseña generada</label>
+        <div class="password-row">
+          <input type="text" id="genResult" readonly>
+          <button id="useGeneratedBtn" class="btn btn-primary">Usar</button>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="closeGeneratorBtn" class="btn">Cerrar</button>
+        <button id="generateNewBtn" class="btn btn-secondary">Generar nueva</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reset Password Modal -->
+  <div id="changePasswordModal" class="modal-overlay hidden">
+    <div class="modal modal-sm">
+      <h2>Restablecer contraseña</h2>
+      <p class="subtitle">Ingresa tu correo y te enviaremos un enlace</p>
+      <div class="form-group">
+        <input type="email" id="cpEmail" placeholder="Correo electrónico">
+      </div>
+      <p id="cpError" class="error hidden"></p>
+      <p id="cpSuccess" class="success hidden"></p>
+      <div class="modal-actions">
+        <button id="cancelCpBtn" class="btn">Cancelar</button>
+        <button id="saveCpBtn" class="btn btn-primary">Enviar enlace</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
