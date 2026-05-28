@@ -195,5 +195,5 @@ Distribuido bajo licencia MIT. Ver [LICENSE](LICENSE) para más información.
 ---
 
 <div align="center">
-  <sub>Hecho con ❤️ por Daniel Cantor</sub>
+  <sub>Hecho con ❤️ por <a href="https://github.com/DanielCantor667">DanielCantor667</a></sub>
 </div>
