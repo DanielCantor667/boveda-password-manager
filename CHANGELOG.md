@@ -7,6 +7,24 @@ y este proyecto sigue [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ---
 
+## [1.1.0] — 2026-05-28
+
+### Changed
+
+- Migrado a `electron-builder` para builds multiplataforma (macOS, Windows, Linux)
+- Reemplazado `build.sh` por configuración declarativa en `package.json`
+- Directorio de salida cambiado de `dist-new/` a `dist-electron/`
+
+### Added
+
+- Scripts NPM: `build:win`, `build:linux`, `build:all`, `pack`
+- Icono `.ico` para Windows en `assets/`
+- Soporte para NSIS installer en Windows
+- Soporte para AppImage + deb en Linux
+- Configuración de artefactos multiplataforma con versionado automático
+
+---
+
 ## [1.0.0] — 2026-05-28
 
 ### Added

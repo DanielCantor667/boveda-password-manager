@@ -88,25 +88,52 @@ miNuevoComando: (param) => ipcRenderer.invoke('mi-nuevo-comando', param),
 
 ## Build
 
-### macOS
+Bóveda usa **electron-builder** para generar instaladores multiplataforma.
+
+### macOS DMG
 
 ```bash
-npm run build
-# o
-./build.sh
+npm run build:mac
 ```
 
-Esto genera:
-- `dist-new/Bóveda.app` — Bundle de la app
-- `dist-new/Bóveda.dmg` — Instalador DMG
+### Windows NSIS Installer
 
-El script:
-1. Limpia `dist-new/`
-2. Copia Electron.app y lo renombra a `Bóveda.app`
-3. Copia el código fuente en el bundle
-4. Configura Info.plist
-5. Firma ad-hoc todos los ejecutables
-6. Genera el DMG con symlink a `/Applications`
+```bash
+npm run build:win
+```
+
+### Linux AppImage + deb
+
+```bash
+npm run build:linux
+```
+
+### Todas las plataformas
+
+```bash
+npm run build:all
+```
+
+### Empaquetar sin instalador (para pruebas)
+
+```bash
+npm run pack
+```
+
+### Salida
+
+Todos los artefactos se generan en `dist-electron/`:
+
+```
+dist-electron/
+├── mac/
+│   └── Bóveda.app
+├── Boveda-1.0.0-mac-arm64.dmg
+├── Boveda-1.0.0-mac-x64.dmg
+├── Boveda-Setup-1.0.0-win-x64.exe
+├── Boveda-1.0.0-linux-x64.AppImage
+└── Boveda-1.0.0-linux-x64.deb
+```
 
 ---
 
@@ -174,7 +201,7 @@ Actualmente no hay tests automatizados. Las pruebas son manuales:
 
 ## Próximos pasos técnicos
 
-- [ ] Migrar a `electron-builder` para builds cross-platform
+- [x] Migrar a `electron-builder` para builds cross-platform
 - [ ] Agregar ESLint con configuración estándar
 - [ ] Agregar tests unitarios con Vitest
 - [ ] Agregar tests end-to-end con Playwright

@@ -20,7 +20,9 @@
     <img src="https://img.shields.io/badge/Supabase-2.106-3FCF8E?logo=supabase&logoColor=white" alt="Supabase">
     <img src="https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript">
     <img src="https://img.shields.io/badge/License-MIT-blue" alt="License">
-    <img src="https://img.shields.io/badge/Plataforma-macOS-lightgrey?logo=apple" alt="Platform">
+    <img src="https://img.shields.io/badge/macOS-✓-lightgrey?logo=apple" alt="macOS">
+    <img src="https://img.shields.io/badge/Windows-✓-blue?logo=windows" alt="Windows">
+    <img src="https://img.shields.io/badge/Linux-✓-orange?logo=linux" alt="Linux">
   </p>
 </div>
 
@@ -96,8 +98,8 @@ Cada entrada puede contener **múltiples credenciales** (útil para servicios co
 | **Estilos** | CSS Custom Properties (tema oscuro) |
 | **Base de datos local** | JSON file (vía `fs/promises`) |
 | **Cloud** | Supabase (PostgreSQL + Auth + Realtime) |
-| **Build** | Bash script personalizado |
-| **Distribución** | DMG (macOS) |
+| **Build** | electron-builder |
+| **Distribución** | DMG (macOS) · NSIS (Windows) · AppImage/deb (Linux) |
 
 ---
 
@@ -153,8 +155,14 @@ Para configurar Supabase desde cero, sigue la [guía de configuración de Supaba
 | Script | Comando | Descripción |
 |---|---|---|
 | `start` | `electron .` | Inicia la app en modo desarrollo |
-| `build` | `./build.sh` | Genera el bundle `.app` y el DMG en `dist-new/` |
-| `build:mac` | `./build.sh` | Alias de `build` |
+| `build` | `electron-builder` | Build para la plataforma actual |
+| `build:mac` | `electron-builder --mac` | Genera DMG para macOS (x64 + arm64) |
+| `build:win` | `electron-builder --win` | Genera NSIS installer para Windows |
+| `build:linux` | `electron-builder --linux` | Genera AppImage + deb para Linux |
+| `build:all` | `electron-builder --mac --win --linux` | Build para todas las plataformas |
+| `pack` | `electron-builder --dir` | Empaqueta sin comprimir (útil para pruebas) |
+
+Los artefactos se generan en `dist-electron/`. |
 
 ---
 
@@ -163,9 +171,10 @@ Para configurar Supabase desde cero, sigue la [guía de configuración de Supaba
 | Hito | Versión | Estado |
 |---|---|---|
 | App funcional offline + Supabase | v1.0.0 | ✅ **Listo** |
-| Migrar a electron-builder | v1.1.0 | 🔜 Próximo |
-| Tests automatizados | v1.1.0 | 🔜 Próximo |
-| Soporte Windows / Linux | v1.2.0 | 📅 Planeado |
+| Build multiplataforma (electron-builder) | v1.1.0 | ✅ **Listo** |
+| Soporte Windows (NSIS installer) | v1.1.0 | ✅ **Listo** |
+| Soporte Linux (AppImage + deb) | v1.1.0 | ✅ **Listo** |
+| Tests automatizados | v1.2.0 | 🔜 Próximo |
 | Export / Import CSV y JSON | v1.2.0 | 📅 Planeado |
 | Cifrado local (SQLite + encryption) | v2.0.0 | 📅 Planeado |
 | Autofill e integración con navegador | v2.1.0 | 🔮 Futuro |

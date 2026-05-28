@@ -9,4 +9,6 @@ dist-old/
 .env.local
 npm-debug.log*
 out/
+dist-electron/
+release/
 *.local.json

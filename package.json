@@ -1,19 +1,84 @@
 {
-  "name": "contrasenas",
-  "version": "1.0.0",
-  "description": "Gestor de contraseñas de escritorio",
+  "name": "boveda",
+  "version": "1.1.0",
+  "description": "Gestor de contraseñas de escritorio — offline-first con sincronización en la nube",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "./build.sh",
-    "build:mac": "./build.sh"
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder --mac --win --linux",
+    "pack": "electron-builder --dir"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "build": {
+    "appId": "com.boveda.app",
+    "productName": "Bóveda",
+    "directories": {
+      "output": "dist-electron",
+      "buildResources": "assets"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "assets/**/*",
+      "resources/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/",
+        "to": "resources/",
+        "filter": ["**/*"]
+      }
+    ],
+    "mac": {
+      "target": [
+        { "target": "dmg", "arch": ["x64", "arm64"] }
+      ],
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.utilities",
+      "artifactName": "Boveda-${version}-mac-${arch}.${ext}",
+      "darkModeSupport": true
+    },
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] }
+      ],
+      "icon": "assets/icon.ico",
+      "artifactName": "Boveda-Setup-${version}-win-x64.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Bóveda",
+      "uninstallDisplayName": "Bóveda ${version}"
+    },
+    "linux": {
+      "target": [
+        { "target": "AppImage", "arch": ["x64"] },
+        { "target": "deb", "arch": ["x64"] }
+      ],
+      "icon": "assets/icon.png",
+      "category": "Utility",
+      "artifactName": "Boveda-${version}-linux-x64.${ext}"
+    }
+  },
+  "keywords": ["password-manager", "electron", "supabase", "vault"],
+  "author": {
+    "name": "Daniel Cantor",
+    "email": "daniellgatico@gmail.com"
+  },
+  "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
-    "electron": "^41.7.0"
+    "electron": "^41.7.0",
+    "electron-builder": "^26.8.1"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.106.2"
